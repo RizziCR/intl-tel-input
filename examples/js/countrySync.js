@@ -5,7 +5,7 @@ var countryData = $.fn.intlTelInput.getCountryData(),
 
 // init plugin
 telInput.intlTelInput({
-  utilsScript: "../../lib/libphonenumber/build/utils.js" // just for formatting/placeholders etc
+  utilsScript: "../../build/js/utils.js" // just for formatting/placeholders etc
 });
 
 // populate the country dropdown
@@ -14,16 +14,16 @@ $.each(countryData, function(i, country) {
 });
 
 // listen to the telephone input for changes
-telInput.change(function() {
+telInput.on("countrychange", function() {
   var countryCode = telInput.intlTelInput("getSelectedCountryData").iso2;
   addressDropdown.val(countryCode);
 });
 
 // trigger a fake "change" event now, to trigger an initial sync
-telInput.change();
+telInput.trigger("countrychange");
 
 // listen to the address dropdown for changes
 addressDropdown.change(function() {
   var countryCode = $(this).val();
-  telInput.intlTelInput("selectCountry", countryCode);
+  telInput.intlTelInput("setCountry", countryCode);
 });

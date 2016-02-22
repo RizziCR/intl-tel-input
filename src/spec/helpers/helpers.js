@@ -1,6 +1,7 @@
 var input,
-  totalCountries = 233,
+  totalCountries = 242,
   totalDialCodes = 227,
+  defaultPreferredCountries = 2,
   // don't call this "keys" as it will clash with the plugin
   keyCodes = {
     UP: 38,
@@ -70,7 +71,7 @@ var getSelectedFlagElement = function(i) {
 
 var getFlagsContainerElement = function(i) {
   i = i || input;
-  return i.parent().find(".flag-dropdown");
+  return i.parent().find(".flag-container");
 };
 
 var selectFlag = function(countryCode, i) {

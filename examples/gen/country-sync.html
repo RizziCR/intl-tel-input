@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Example: Country sync</title>
     <link rel="stylesheet" href="../css/prism.css">
-    <link rel="stylesheet" href="../../build/css/intlTelInput.css?1433497107037">
-    <link rel="stylesheet" href="../../build/css/demo.css?1433497107037">
+    <link rel="stylesheet" href="../../build/css/intlTelInput.css?1455225389933">
+    <link rel="stylesheet" href="../../build/css/demo.css?1455225389933">
     
-      <link rel="stylesheet" href="../css/countrySync.css?1433497107037">
+      <link rel="stylesheet" href="../css/countrySync.css?1455225389933">
     
 
     <!-- GOOGLE ANALYTICS -->
@@ -52,7 +52,7 @@ var countryData = $.fn.intlTelInput.getCountryData(),
 
 // init plugin
 telInput.intlTelInput({
-  utilsScript: &quot;../../lib/libphonenumber/build/utils.js&quot; // just for formatting/placeholders etc
+  utilsScript: &quot;../../build/js/utils.js&quot; // just for formatting/placeholders etc
 });
 
 // populate the country dropdown
@@ -61,18 +61,18 @@ $.each(countryData, function(i, country) {
 });
 
 // listen to the telephone input for changes
-telInput.change(function() {
+telInput.on(&quot;countrychange&quot;, function() {
   var countryCode = telInput.intlTelInput(&quot;getSelectedCountryData&quot;).iso2;
   addressDropdown.val(countryCode);
 });
 
 // trigger a fake &quot;change&quot; event now, to trigger an initial sync
-telInput.change();
+telInput.trigger(&quot;countrychange&quot;);
 
 // listen to the address dropdown for changes
 addressDropdown.change(function() {
   var countryCode = $(this).val();
-  telInput.intlTelInput(&quot;selectCountry&quot;, countryCode);
+  telInput.intlTelInput(&quot;setCountry&quot;, countryCode);
 });
 </code></pre>
 
@@ -95,7 +95,7 @@ addressDropdown.change(function() {
 
     <script src="../js/prism.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../../build/js/intlTelInput.js?1433497107037"></script>
-    <script src="../js/countrySync.js?1433497107037"></script>
+    <script src="../../build/js/intlTelInput.js?1455225389933"></script>
+    <script src="../js/countrySync.js?1455225389933"></script>
   </body>
 </html>
